@@ -1,0 +1,12 @@
+.box{
+  border: 1px solid black;
+  border-radius: 6px;
+  width: 75%;
+  margin: auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.items-space{
+  margin-bottom: 2px;
+}
