@@ -1,21 +1,46 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { IItem } from '../interfaces/item';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ItemsService {
 
   private listOfItems: any[] = [];
-  public numberOfItems: number;
+  public numberOfItems = 0;
   private subject = new Subject<any>();
+  public errorMessage = "";
 
-  constructor() {
-    this.numberOfItems = 0;
+  public getItems_url = 'http://localhost:3000/api/items';
+
+  constructor(private http: HttpClient) {
+    this.getItems().subscribe((data) => {
+      data.forEach((val)=>{
+        this.addToItemList(val.name);
+        console.log(val.name);
+      });
+    },
+    error => this.errorMessage = error);
+  }
+
+  getItems(): Observable<IItem[]> {
+    return this.http.get<IItem[]>(this.getItems_url).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return throwError(error.message || "Server Error");
   }
 
   addToItemList(itemName: any) {
-    this.listOfItems = this.listOfItems.concat(itemName.value);
+    let temp = itemName;
+    this.listOfItems = this.listOfItems.concat(temp);
     ++this.numberOfItems;
     console.log('Item Added');
     this.subject.next(this.listOfItems);
@@ -32,6 +57,14 @@ export class ItemsService {
 
   getItemList(): Observable<any> {
     return this.subject.asObservable();
+  }
+
+  getStaticItemList(){
+    return this.listOfItems;
+  }
+
+  getNumberOfItems(){
+    return this.numberOfItems;
   }
 
 }

@@ -13,6 +13,8 @@ export class ItemListComponent implements OnInit {
   subscription: Subscription;
 
   ngOnInit(): void {
+    this.listOfItems = this._itemsService.getStaticItemList();
+    console.log(this.listOfItems);
   }
 
   deleteItem(event: any) {

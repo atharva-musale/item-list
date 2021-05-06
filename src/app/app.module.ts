@@ -9,6 +9,7 @@ import { ItemComponent } from './components/item/item.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ItemsService } from './services/items.service';
+import { HttpClientModule } from '@angular/common/http'       // import http client module to make http requests
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ItemsService } from './services/items.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule  // add it to the imports
   ],
   providers: [ItemsService],
   bootstrap: [AppComponent]

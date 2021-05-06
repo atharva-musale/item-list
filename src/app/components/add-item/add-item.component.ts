@@ -19,7 +19,7 @@ export class AddItemComponent implements OnInit {
       alert("Enter a valid Item name.");
     }
     else {
-      this._itemsService.addToItemList(itemName);
+      this._itemsService.addToItemList(itemName.value);
       itemName.value = "";
     }
   }

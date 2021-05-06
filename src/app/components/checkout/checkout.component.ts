@@ -9,11 +9,13 @@ import { Subscription } from 'rxjs';
 })
 export class CheckoutComponent implements OnInit {
 
-  public numOfItems: number = 0;
+  public numOfItems = 0;
   subscription: Subscription;
 
 
   ngOnInit(): void {
+    this.numOfItems = this._itemsService.getNumberOfItems();
+    console.log("Num of items in checkout", this.numOfItems);
   }
 
   constructor(private _itemsService: ItemsService) {
