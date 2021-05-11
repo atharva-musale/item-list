@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IItem } from 'src/app/interfaces/item';
 import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
@@ -19,7 +20,10 @@ export class AddItemComponent implements OnInit {
       alert("Enter a valid Item name.");
     }
     else {
-      this._itemsService.addToItemList(itemName.value);
+      let newItem: IItem = this._itemsService.createObject(itemName.value);
+      this._itemsService.addToItemList(newItem).subscribe((res) => {
+        console.log(res);
+      });
       itemName.value = "";
     }
   }

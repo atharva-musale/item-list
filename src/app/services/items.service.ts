@@ -11,21 +11,23 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 export class ItemsService {
 
-  private listOfItems: any[] = [];
-  public numberOfItems = 0;
+  private listOfItems: IItem[] = [];
+  private numberOfItems = 0;
   private subject = new Subject<any>();
   public errorMessage = "";
 
   public getItems_url = 'http://localhost:3000/api/items';
+  public postItems_url = 'http://localhost:3000/api/items';
+  public postSingleItem_url = 'http://localhost:3000/api/item';
 
   constructor(private http: HttpClient) {
     this.getItems().subscribe((data) => {
-      data.forEach((val)=>{
-        this.addToItemList(val.name);
-        console.log(val.name);
+      data.forEach((val) => {
+        this.addToItemList(val);
+        console.log(val);
       });
     },
-    error => this.errorMessage = error);
+      error => this.errorMessage = error);
   }
 
   getItems(): Observable<IItem[]> {
@@ -38,33 +40,54 @@ export class ItemsService {
     return throwError(error.message || "Server Error");
   }
 
-  addToItemList(itemName: any) {
-    let temp = itemName;
-    this.listOfItems = this.listOfItems.concat(temp);
-    ++this.numberOfItems;
-    console.log('Item Added');
-    this.subject.next(this.listOfItems);
+  createObject(itemName: any) {
+    let newItem = {
+      id: this.listOfItems.length + 1,
+      name: itemName,
+      cost: 100
+    }
+    return newItem;
   }
 
-  removeFromItemList(val: any) {
+  addToItemList(newItem: IItem) {
+    ++this.numberOfItems;
+    this.listOfItems.push(newItem);
+    this.subject.next(this.listOfItems);
+
+    const headers = { 'content-type': 'application/json' }
+    let json_newItem = JSON.stringify(newItem);
+    return this.http.post(this.postSingleItem_url, json_newItem, { "headers": headers });
+  }
+
+  deleteItem(itemToDelete: IItem) {
     --this.numberOfItems;
     // go through the list, if item is found, splice it
     this.listOfItems.forEach((item, index) => {
-      if (item === val) this.listOfItems.splice(index, 1);
+      if (item.id === itemToDelete.id) this.listOfItems.splice(index, 1);
     });
     this.subject.next(this.listOfItems);
+
+    var del_url = `http://localhost:3000/api/items/${itemToDelete.id}`;
+    return this.http.delete(del_url);
+  }
+
+  getStaticItemList(): IItem[] {
+    return this.listOfItems;
+  }
+
+  getNumberOfItems(): number {
+    return this.numberOfItems;
   }
 
   getItemList(): Observable<any> {
     return this.subject.asObservable();
   }
 
-  getStaticItemList(){
-    return this.listOfItems;
-  }
-
-  getNumberOfItems(){
-    return this.numberOfItems;
+  sendItemListToBackend(): Observable<any> {
+    const headers = { 'content-type': 'application/json' }
+    console.log('Send this to backend: ');
+    let json_listOfItemObjects = JSON.stringify(this.listOfItems);
+    return this.http.post(this.postItems_url, json_listOfItemObjects, { "headers": headers });
   }
 
 }

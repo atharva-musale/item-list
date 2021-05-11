@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
 import { Subscription } from 'rxjs';
+import { IItem } from 'src/app/interfaces/item';
 
 @Component({
   selector: 'app-item-list',
@@ -9,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class ItemListComponent implements OnInit {
 
-  public listOfItems: any[] = [];
+  public listOfItems: IItem[] = [];
   subscription: Subscription;
 
   ngOnInit(): void {
@@ -18,14 +19,14 @@ export class ItemListComponent implements OnInit {
   }
 
   deleteItem(event: any) {
-    console.log(event);
-    this._itemsService.removeFromItemList(event);
+    this._itemsService.deleteItem(event).subscribe((res) => {
+      console.log(res);
+    });
   }
 
   constructor(private _itemsService: ItemsService) {
     this.subscription = this._itemsService.getItemList().subscribe(itemList => {
       this.listOfItems = itemList;
-      console.log(this.listOfItems);
     });
   }
 }

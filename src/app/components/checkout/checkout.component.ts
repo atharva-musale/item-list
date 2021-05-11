@@ -10,18 +10,26 @@ import { Subscription } from 'rxjs';
 export class CheckoutComponent implements OnInit {
 
   public numOfItems = 0;
-  subscription: Subscription;
+  // subscription: Subscription;
 
 
   ngOnInit(): void {
-    this.numOfItems = this._itemsService.getNumberOfItems();
-    console.log("Num of items in checkout", this.numOfItems);
+    this._itemsService.getItemList().subscribe(() => {
+      this.numOfItems = this._itemsService.getNumberOfItems();
+    });
   }
 
   constructor(private _itemsService: ItemsService) {
-    this.subscription = this._itemsService.getItemList().subscribe(() => {
-      this.numOfItems = _itemsService.numberOfItems;
-    });
+    // this.subscription = this._itemsService.getItemList().subscribe(() => {
+    //   this.numOfItems = _itemsService.numberOfItems;
+    // });
+  }
+
+  onCheckout() {
+    // this._itemsService.sendItemListToBackend().subscribe((res) => {
+    //   console.log(res);
+    // });
+
   }
 
 }
