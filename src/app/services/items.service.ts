@@ -13,6 +13,7 @@ export class ItemsService {
 
   private listOfItems: IItem[] = [];
   private numberOfItems = 0;
+  private costOfItems = 0;
   private subject = new Subject<any>();
   public errorMessage = "";
 
@@ -24,7 +25,6 @@ export class ItemsService {
     this.getItems().subscribe((data) => {
       data.forEach((val) => {
         this.addToItemList(val);
-        console.log(val);
       });
     },
       error => this.errorMessage = error);
@@ -51,6 +51,8 @@ export class ItemsService {
 
   addToItemList(newItem: IItem) {
     ++this.numberOfItems;
+    this.costOfItems += newItem.cost;
+    console.log(this.costOfItems);
     this.listOfItems.push(newItem);
     this.subject.next(this.listOfItems);
 
@@ -81,6 +83,10 @@ export class ItemsService {
 
   getItemList(): Observable<any> {
     return this.subject.asObservable();
+  }
+
+  getCostOfItems(): number {
+    return this.costOfItems;
   }
 
   sendItemListToBackend(): Observable<any> {
