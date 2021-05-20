@@ -1,22 +1,4 @@
 .checkout-container{
-  width: 75%;
+  width: 60%;
   margin: auto;
-  /* padding: 1%; */
-  /* border: 1px solid black; */
-  /* border-radius: 12px; */
 }
-
-/* #checkout{
-  width: 20%; 
-  float: left;
-  height: 8%;
-}
-
-#cardNumber{
-  width: 35%;
-}
-
-.input-name, .input-amount, .input-number{
-  display:inline;
-  margin: 5px;
-} */

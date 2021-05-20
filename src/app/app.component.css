@@ -1,12 +1,14 @@
 .box{
-  border: 1px solid black;
+  border: 1px solid rgb(210, 210, 210);
   border-radius: 6px;
-  width: 75%;
+  width: 60%;
   margin: auto;
   margin-top: 1%;
   margin-bottom: 1%;
+  padding: 1%;
 }
 
 .items-space{
+  padding-bottom: 6px;
   margin-bottom: 2px;
 }
