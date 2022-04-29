@@ -1,25 +1,11 @@
-<div class="app-container">
-
-  <div class="navbar-space">
-    <app-navbar></app-navbar>
+<div class="wrapper">
+  <div class="display-items-container">
+    <app-add-item></app-add-item>
+    <app-item-list class="item-list"></app-item-list>
   </div>
-
-  <div class="box">
-    <div class="addItem-space">
-      <app-add-item></app-add-item>
-    </div>
-
-    <div class="items-space">
-      <app-item-list></app-item-list>
-    </div>
-
-  </div>
-
-
-  <div class="checkout-space">
+  <div class="checkout-container">
     <app-checkout></app-checkout>
   </div>
-
 </div>
 
 <router-outlet></router-outlet>

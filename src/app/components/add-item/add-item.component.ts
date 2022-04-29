@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IItem } from 'src/app/interfaces/item';
 import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
@@ -7,23 +6,21 @@ import { ItemsService } from 'src/app/services/items.service';
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
-export class AddItemComponent implements OnInit {
+export class AddItemComponent {
 
   constructor(private _itemsService: ItemsService) { }
 
-  ngOnInit(): void {
-  }
-
-  clickEvent(itemName: any) {
-    console.log('Button Clicked.');
+  /**
+   * Triggered on add item, adds item to the list in service
+   *
+   * @param itemName input field to get the current value
+   */
+  public addItemClickEvent(itemName: any) {
     if (itemName.value == "") {
-      alert("Enter a valid Item name.");
+      alert("Enter a valid item name.");
     }
     else {
-      let newItem: IItem = this._itemsService.createObject(itemName.value);
-      this._itemsService.addToItemList(newItem).subscribe((res) => {
-        console.log(res);
-      });
+      this._itemsService.addToItemList(itemName.value);
       itemName.value = "";
     }
   }

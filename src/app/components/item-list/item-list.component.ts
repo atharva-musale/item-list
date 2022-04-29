@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { IItem } from 'src/app/interfaces/item';
 
 @Component({
@@ -8,25 +8,34 @@ import { IItem } from 'src/app/interfaces/item';
   templateUrl: './item-list.component.html',
   styleUrls: ['./item-list.component.css']
 })
-export class ItemListComponent implements OnInit {
+export class ItemListComponent implements OnInit, OnDestroy {
+  /**
+   * List of items
+   */
+  public listOfItems$: Observable<IItem[]>;
 
-  public listOfItems: IItem[] = [];
-  subscription: Subscription;
-
-  ngOnInit(): void {
-    this.listOfItems = this._itemsService.getStaticItemList();
-    console.log(this.listOfItems);
-  }
-
-  deleteItem(event: any) {
-    this._itemsService.deleteItem(event).subscribe((res) => {
-      console.log(res);
-    });
-  }
+  /**
+   * List of subscriptions to unsuscribe on destroy
+   */
+  private subscriptions: Subscription[] = [];
 
   constructor(private _itemsService: ItemsService) {
-    this.subscription = this._itemsService.getItemList().subscribe(itemList => {
-      this.listOfItems = itemList;
-    });
+    this.listOfItems$ = this._itemsService.itemList$;
+  }
+
+  ngOnInit(): void {
+    this.subscriptions.push(
+      this._itemsService.itemList$.subscribe((items) => {
+        console.log('Items in itemList: ', items);
+      })
+    )
+  }
+
+  public deleteItem(item: any ) {
+    this._itemsService.deleteItem(item);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
