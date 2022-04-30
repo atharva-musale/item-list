@@ -1,21 +1,18 @@
 <div class="checkout-container">
-  <div id="checkoutForm" class="card card-body">
-    <form id="personalDetails" class="form-inline mb-3">
-      <span style="margin-right: 10%;">Name: </span>
-      <input type="text" style="width: 35%;" class="form-control mr-2" id="name" placeholder="Enter Name">
-    </form>
-
-    <form id="paymentAmount" class="form-inline mb-3">
-      <span style="margin-right: 10%;">Amount: </span>
-      <div id="amount">{{ (costOfItems) }}</div>
-    </form>
-
-    <form id="cardDetails" class="form-inline mb-3">
-      <span style="margin-right: 5%;">Card Number: </span>
-      <input type="text" style="width: 35%;" class="cvv-input form-control mr-2" id="cardNumber"
-        placeholder="Enter credit card number">
-    </form>
-    <input type="submit" id="checkout" (click)="onCheckout()" class="btn btn-dark" value="checkout"
-      style="width: 20%; float: left;">
-  </div>
+  <h2>Checkout</h2>
+  <form class="form-inline mb-3">
+    <div class="name-form grid-container">
+      <label class="grid-item-left" for="name">Name: </label>
+      <input class="grid-item-right custom-input" type="text" id="name" placeholder="Enter Name">
+    </div>
+    <div class="card-number-form grid-container">
+      <label class="grid-item-left" for="cardNumber">Card Number: </label>
+      <input class="grid-item-right custom-input" type="text" placeholder="Enter credit card number">
+    </div>
+    <div class="display-amount grid-container">
+      <label class="grid-item-left" for="amount">Amount: </label>
+      <input class="grid-item-right custom-input" id="amount" type="number" value="{{ (costOfItems) }}" disabled>
+    </div>
+    <button class="btn btn-orange-outline" (click)="onCheckout()">Checkout</button>
+  </form>
 </div>

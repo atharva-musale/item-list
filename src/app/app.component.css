@@ -1,18 +1,16 @@
 .wrapper {
-  margin: 8rem auto;
+  background-color: var(--bg-gray);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  max-width: 70rem;
+  margin: auto;
+  padding: 1rem 2rem;
+}
+
+.wrapper h1 {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .display-items-container {
-  border: 1px solid rgb(210, 210, 210);
-  border-radius: 6px;
-  width: 60%;
-  margin: auto;
-  margin-top: 1%;
-  margin-bottom: 1%;
-  padding: 1%;
-}
-
-.items-space {
-  padding-bottom: 6px;
-  margin-bottom: 2px;
+  margin-bottom: 1rem;
 }

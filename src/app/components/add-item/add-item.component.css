@@ -1,4 +1,13 @@
-.container{
-  width: 90%;
-  margin: auto;
+.add-item-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 1rem;
+}
+
+.add-item-container input {
+  grid-column: 1 / 4;
+}
+
+.add-item-container button {
+  grid-column: 4 / 5;
 }

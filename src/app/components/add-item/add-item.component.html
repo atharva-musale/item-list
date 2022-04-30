@@ -1,8 +1,4 @@
-<div class="container">
-  <div class="input-group mb-3" id="addItemField">
-    <input type="text" #itemName class="form-control" placeholder="Enter item">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" (click)="addItemClickEvent(itemName)">Add item</button>
-    </div>
-  </div>
+<div class="add-item-container">
+  <input class="custom-input" type="text" #itemName placeholder="Enter item">
+  <button class="btn btn-orange-outline" type="button" (click)="addItemClickEvent(itemName)">Add item</button>
 </div>

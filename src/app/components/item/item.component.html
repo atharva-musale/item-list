@@ -1,6 +1,5 @@
-<li class="single-item list-group-item">
-  <div>
-    {{ item.name }}
-    <button (click)="onDelete()" class="btn btn-danger btn-sm float-right delete">X</button>
-  </div>
+<li class="list-item">
+  <p class="item-id">{{ item.id }}.</p>
+  <p>{{ item.name }}</p>
+  <button (click)="onDelete()" class="btn btn-orange">X</button>
 </li>

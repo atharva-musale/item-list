@@ -1,1 +1,87 @@
-/* You can add global styles to this file, and also import other style files */
+/* import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* starter template */
+*,*::after,*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-nav: rgba(0, 214, 170, .8);
+  --bg-black: #161819;
+  --bg-gray: #EAECEF;
+  --bg-gray-light: #f9f9f9;
+  --text-gray: #3E4147;
+  --text-orange-light: #E36E40;
+  --text-orange-dark: #CC4425;
+  --text-white: #FFFFFF;
+  --text-blue: #8EF2FF;
+  --bg-purple: #694D75;
+  --bg-blue: #407899;
+}
+
+app-root {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* typography */
+h1, h2, h3, h4, h5 {
+  font-family: 'Playfair Display', serif;
+}
+p, span {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: 0.3px;
+  line-height: 23px;
+}
+
+/* buttons */
+.btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.7rem;
+  border: none;
+  transition: all ease-in-out 400ms;
+  margin-left: 0.7rem;
+}
+
+.btn-orange {
+  background: var(--text-orange-light);
+  border: 1px solid var(--text-orange-light);
+}
+.btn-orange:hover {
+  cursor: pointer;
+  background: var(--text-orange-dark);
+  border: 1px solid var(--text-orange-dark);
+}
+
+.btn-orange-outline {
+  background: transparent;
+  color: var(--text-orange-dark);
+  border: 1px solid var(--text-orange-dark);
+}
+.btn-orange-outline:hover {
+  cursor: pointer;
+  background: var(--text-orange-dark);
+  color: black;
+}
+
+/* inputs */
+.custom-input {
+  font-family: 'Montserrat', serif;
+  font-size: 1.2rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+}
+.custom-input:focus {
+  border: 1px solid var(--bg-black);
+  outline: none;
+}
