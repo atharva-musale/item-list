@@ -1,9 +1,16 @@
-import { IItem } from "../interfaces/item";
+import {
+  IItem,
+} from "../interfaces/item";
 
+/**
+ * Calculates total cost from the list of items
+ *
+ * @param items list of items
+ * @returns total cost
+ */
 export function calculateTotalCost(items: IItem[]): number {
-  let total = 0;
-  items.forEach((item) => {
-    total = total + item.cost;
-  });
-  return total;
+  const totalCostOfItems = items.reduce((total, currentValue) => {
+    return total + currentValue.cost;
+  }, 0);
+  return totalCostOfItems;
 }

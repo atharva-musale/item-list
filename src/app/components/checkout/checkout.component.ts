@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { ItemsService } from 'src/app/services/items.service';
-import { take } from 'rxjs/operators';
-import { calculateTotalCost } from 'src/app/helpers/item.helper';
-import { Subscription } from 'rxjs';
+import {
+  Component,
+  OnInit,
+} from '@angular/core';
+import {
+  ItemsService,
+} from 'src/app/services/items.service';
+import {
+  calculateTotalCost,
+} from 'src/app/helpers/item.helper';
+import {
+  Subscription,
+} from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
@@ -23,7 +31,7 @@ export class CheckoutComponent implements OnInit {
   /**
    * List of subscriptions to unsuscribe on destroy
    */
-   private subscriptions: Subscription[] = [];
+  private subscriptions: Subscription[] = [];
 
   constructor(private _itemsService: ItemsService) { }
 
@@ -35,8 +43,6 @@ export class CheckoutComponent implements OnInit {
         this.costOfItems = calculateTotalCost(items);
       })
     );
-    console.log('Number of items: ', this.numOfItems);
-    console.log('Cosr of items: ', this.costOfItems);
   }
 
   /**
@@ -45,5 +51,4 @@ export class CheckoutComponent implements OnInit {
   public onCheckout() {
     console.log("Checkout clicked");
   }
-
 }

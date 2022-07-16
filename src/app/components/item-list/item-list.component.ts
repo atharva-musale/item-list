@@ -1,7 +1,18 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ItemsService } from 'src/app/services/items.service';
-import { Observable, Subscription } from 'rxjs';
-import { IItem } from 'src/app/interfaces/item';
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import {
+  ItemsService,
+} from 'src/app/services/items.service';
+import {
+  Observable,
+  Subscription,
+} from 'rxjs';
+import {
+  IItem,
+} from 'src/app/interfaces/item';
 
 @Component({
   selector: 'app-item-list',
@@ -31,6 +42,11 @@ export class ItemListComponent implements OnInit, OnDestroy {
     )
   }
 
+  /**
+   * To delete item from service
+   *
+   * @param item item to be deleted
+   */
   public deleteItem(item: any ) {
     this._itemsService.deleteItem(item);
   }

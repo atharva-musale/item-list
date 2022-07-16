@@ -1,25 +1,35 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { IItem } from 'src/app/interfaces/item';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import {
+  IItem,
+} from 'src/app/interfaces/item';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
-export class ItemComponent implements OnInit {
-
-  // Input and Output event to parent element( itemList )
-  // Input and Output event to parent element( itemList )
-
+export class ItemComponent {
+  /**
+   * Details of input from parent
+   */
   @Input() item!: IItem;
+
+  /**
+   * Emits when delete button is clicked
+   */
   @Output() deleteItemEvent = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit(): void { }
-
-  // Emit the delete event to itemList
-  onDelete() {
+  /**
+   * Emit the delete event to itemList
+   */
+  public onDelete() {
     this.deleteItemEvent.emit(this.item);
   }
 

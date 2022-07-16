@@ -1,7 +1,15 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { IItem } from '../interfaces/item';
+import {
+  Injectable,
+} from '@angular/core';
+import {
+  BehaviorSubject,
+} from 'rxjs';
+import {
+  take,
+} from 'rxjs/operators';
+import {
+  IItem,
+} from '../interfaces/item';
 
 @Injectable({
   providedIn: 'root'
