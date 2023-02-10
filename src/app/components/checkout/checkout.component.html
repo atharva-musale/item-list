@@ -1,5 +1,5 @@
 <div class="checkout-container">
-  <h2>Checkout</h2>
+  <h1>Checkout</h1>
   <form class="form-inline mb-3">
     <div class="name-form grid-container">
       <label class="grid-item-left" for="name">Name: </label>
@@ -11,7 +11,7 @@
     </div>
     <div class="display-amount grid-container">
       <label class="grid-item-left" for="amount">Amount: </label>
-      <input class="grid-item-right custom-input" id="amount" type="number" value="{{ (costOfItems) }}" disabled>
+      <input class="grid-item-right custom-input disabled" id="amount" type="number" value="{{ (costOfItems) }}" disabled>
     </div>
     <button class="btn btn-orange-outline" (click)="onCheckout()">Checkout</button>
   </form>

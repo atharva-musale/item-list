@@ -1,5 +1,5 @@
 .list-item {
-  background-color: var(--bg-gray-light);
+  background-color: var(--gray-100);
   display: flex;
   align-items: center;
   list-style: none;
@@ -16,7 +16,13 @@
   font-size: 1.1rem;
 }
 
-.list-item button {
-  font-size: 1.1rem;
+.delete-button {
+  font-size: 2rem;
   margin-left: auto;
+  line-height: normal;
+  padding: 0 0.8rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

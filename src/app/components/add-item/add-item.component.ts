@@ -13,7 +13,7 @@ import {
 
 export class AddItemComponent {
 
-  constructor(private _itemsService: ItemsService) { }
+  constructor(private itemsService: ItemsService) { }
 
   /**
    * Triggered on add item, adds item to the list in service
@@ -25,7 +25,7 @@ export class AddItemComponent {
       alert("Enter a valid item name.");
     }
     else {
-      this._itemsService.addToItemList(itemName.value);
+      this.itemsService.addToItemList(itemName.value);
       itemName.value = "";
     }
   }

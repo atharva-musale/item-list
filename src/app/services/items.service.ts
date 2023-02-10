@@ -8,18 +8,17 @@ import {
   take,
 } from 'rxjs/operators';
 import {
-  IItem,
+  Item,
 } from '../interfaces/item';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class ItemsService {
   /**
    * list of items as a subject so that when new item is added it's done centerally
    */
-  private itemList = new BehaviorSubject<IItem[]>([]);
+  private itemList = new BehaviorSubject<Item[]>([]);
   public itemList$ = this.itemList.asObservable();
 
   constructor() {}
@@ -45,9 +44,8 @@ export class ItemsService {
    * Deletes the item
    *
    * @param itemToDelete
-   * @returns
    */
-  public deleteItem(itemToDelete: IItem) {
+  public deleteItem(itemToDelete: Item) {
     this.itemList$.pipe((take(1))).subscribe((items) => {
       items.forEach((item, index) => {
         if (item.id === itemToDelete.id) {
@@ -57,5 +55,4 @@ export class ItemsService {
       this.itemList.next(items);
     });
   }
-
 }

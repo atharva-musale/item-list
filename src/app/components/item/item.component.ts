@@ -5,7 +5,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import {
-  IItem,
+  Item,
 } from 'src/app/interfaces/item';
 
 @Component({
@@ -17,12 +17,14 @@ export class ItemComponent {
   /**
    * Details of input from parent
    */
-  @Input() item!: IItem;
+  @Input()
+  public item?: Item;
 
   /**
    * Emits when delete button is clicked
    */
-  @Output() deleteItemEvent = new EventEmitter();
+  @Output()
+  private deleteItemEvent = new EventEmitter();
 
   constructor() { }
 

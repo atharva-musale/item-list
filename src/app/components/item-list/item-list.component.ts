@@ -11,7 +11,7 @@ import {
   Subscription,
 } from 'rxjs';
 import {
-  IItem,
+  Item,
 } from 'src/app/interfaces/item';
 
 @Component({
@@ -23,7 +23,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
   /**
    * List of items
    */
-  public listOfItems$: Observable<IItem[]>;
+  public listOfItems$: Observable<Item[]>;
 
   /**
    * List of subscriptions to unsuscribe on destroy

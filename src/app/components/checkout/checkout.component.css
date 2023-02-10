@@ -2,7 +2,7 @@
   margin: 1rem 0;
 }
 
-.checkout-container h2{
+.checkout-container h1 {
   text-align: center;
   margin: 1rem 0;
 }
@@ -29,6 +29,10 @@
 }
 .checkout-container input {
   font-size: 1.1rem;
+}
+
+.disabled {
+  outline: none;
 }
 
 .checkout-container button {

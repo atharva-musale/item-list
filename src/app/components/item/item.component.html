@@ -1,5 +1,5 @@
-<li class="list-item">
+<li *ngIf="item" class="list-item">
   <p class="item-id">{{ item.id }}.</p>
   <p>{{ item.name }}</p>
-  <button (click)="onDelete()" class="btn btn-orange">X</button>
+  <button (click)="onDelete()" class="btn btn-orange delete-button">×</button>
 </li>

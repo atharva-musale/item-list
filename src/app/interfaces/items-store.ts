@@ -1,7 +1,7 @@
-import { IItem } from "./item";
+import { Item } from "./item";
 
 export interface ItemsStore {
-  listOfItems: IItem[],
+  listOfItems: Item[],
   numberOfItems: number,
   costOfItems: number
 }

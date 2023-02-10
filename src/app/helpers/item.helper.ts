@@ -1,5 +1,5 @@
 import {
-  IItem,
+  Item,
 } from "../interfaces/item";
 
 /**
@@ -8,9 +8,8 @@ import {
  * @param items list of items
  * @returns total cost
  */
-export function calculateTotalCost(items: IItem[]): number {
-  const totalCostOfItems = items.reduce((total, currentValue) => {
+export function calculateTotalCost(items: Item[]): number {
+  return items.reduce((total, currentValue) => {
     return total + currentValue.cost;
   }, 0);
-  return totalCostOfItems;
 }

@@ -1,87 +1,207 @@
-/* import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+/* imported fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-/* starter template */
-*,*::after,*::before {
+/* reset stuff */
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 :root {
-  --bg-nav: rgba(0, 214, 170, .8);
-  --bg-black: #161819;
-  --bg-gray: #EAECEF;
-  --bg-gray-light: #f9f9f9;
-  --text-gray: #3E4147;
-  --text-orange-light: #E36E40;
-  --text-orange-dark: #CC4425;
-  --text-white: #FFFFFF;
-  --text-blue: #8EF2FF;
-  --bg-purple: #694D75;
-  --bg-blue: #407899;
-}
+  --accent-teal: rgba(0, 214, 170, 0.8);
+  --accent-blue: #8ef2ff;
+  --orange-100: #e36e40;
+  --orange-200: #cc4425;
+  --purple: #694d75;
+  --blue: #407899;
 
-app-root {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  --black: #161819;
+  --gray-300: #3e4147;
+  --gray-200: #eaecef;
+  --gray-100: #f2f2f2;
+  --white: #ffffff;
 }
 
 /* typography */
-h1, h2, h3, h4, h5 {
-  font-family: 'Playfair Display', serif;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Poppins", serif;
 }
-p, span {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+p,
+a,
+li,
+label {
+  font-family: Georgia, "Times New Roman", Times, serif;
   letter-spacing: 0.3px;
   line-height: 23px;
 }
 
-/* buttons */
+/* custom element styling */
+.container {
+  width: min(40rem, 80%);
+  padding: 2rem;
+  background-color: var(--gray-200);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  margin: 3rem auto;
+}
+
+input {
+  border: none;
+  font-size: 1.1rem;
+  font-family: "Raleway", sans-serif;
+  border-radius: 0.3rem;
+  outline: 1px solid var(--gray-200);
+  padding: 0.2rem 0.4rem;
+}
+input:focus {
+  outline: 2px solid var(--accent-blue);
+}
+
+/* navbar */
+header {
+  background-color: var(--accent-teal);
+  padding: 0.3rem 4rem;
+}
+
+.logo {
+  font-size: 1.1rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid black;
+}
+.logo:hover {
+  background-color: black;
+  color: var(--white);
+  cursor: pointer;
+  transition: ease-in-out 400ms;
+}
+
+nav {
+  display: flex;
+  flex-grow: 1;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding: 0.3rem 0;
+  text-transform: uppercase;
+}
+
+nav ul {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+}
+
+nav li {
+  list-style: none;
+  margin-left: 1rem;
+}
+
+nav li a {
+  position: relative;
+  text-decoration: none;
+  padding: 0.2rem;
+  color: black;
+}
+
+nav li a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  left: 0;
+  right: 0;
+  bottom: -0.3rem;
+  opacity: 0;
+}
+nav li a:hover::after {
+  cursor: pointer;
+  opacity: 1;
+  transition: ease-in-out 400ms;
+}
+
+/* Buttons */
 .btn {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
   padding: 0.3rem 0.7rem;
   border: none;
-  transition: all ease-in-out 400ms;
-  margin-left: 0.7rem;
+  color: white;
+  transition: all ease-in-out 200ms;
 }
 
 .btn-orange {
-  background: var(--text-orange-light);
-  border: 1px solid var(--text-orange-light);
+  background: var(--orange-100);
+  border: 1px solid var(--orange-100);
 }
 .btn-orange:hover {
   cursor: pointer;
-  background: var(--text-orange-dark);
-  border: 1px solid var(--text-orange-dark);
+  background: var(--orange-200);
+  border: 1px solid var(--orange-200);
 }
 
 .btn-orange-outline {
   background: transparent;
-  color: var(--text-orange-dark);
-  border: 1px solid var(--text-orange-dark);
+  color: var(--orange-200);
+  border: 1px solid var(--orange-200);
 }
 .btn-orange-outline:hover {
   cursor: pointer;
-  background: var(--text-orange-dark);
-  color: black;
+  background: var(--orange-200);
+  color: white;
 }
 
-/* inputs */
-.custom-input {
-  font-family: 'Montserrat', serif;
-  font-size: 1.2rem;
-  border: 1px solid #bbb;
-  border-radius: 4px;
-  padding: 0.2rem 0.4rem;
+/* Cards */
+.card {
+  width: min(30rem, 80%);
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25);
+  margin: 3rem auto;
+  border-radius: 1rem;
+  font-family: "Poppins", sans-serif;
 }
-.custom-input:focus {
-  border: 1px solid var(--bg-black);
-  outline: none;
+
+.card-header {
+  background-color: #fafafa;
+  border-bottom: 1px solid black;
+  padding: 1rem 1rem 0.8rem 1rem;
+}
+
+.card-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.card-sub-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.card-content {
+  margin: 0.8rem 1rem;
+  background-color: white;
+}
+
+.card-footer {
+  background-color: #fafafa;
+  padding: 0.8rem 1rem 1rem 1rem;
+  border-top: 1px solid black;
 }
