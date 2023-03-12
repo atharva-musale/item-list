@@ -13,3 +13,13 @@ export function calculateTotalCost(items: Item[]): number {
     return total + currentValue.cost;
   }, 0);
 }
+
+/**
+ * Creates new Item
+ *
+ * @param itemName name of the new item
+ * @returns new item
+ */
+export function createNewItem(id: number, itemName: string, cost = 100): Item {
+  return { id: id, name: itemName, cost: cost };
+}

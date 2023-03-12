@@ -11,7 +11,7 @@
     </div>
     <div class="display-amount grid-container">
       <label class="grid-item-left" for="amount">Amount: </label>
-      <input class="grid-item-right custom-input disabled" id="amount" type="number" value="{{ (costOfItems) }}" disabled>
+      <input class="grid-item-right custom-input disabled" id="amount" type="number" value="{{ totalCostOfItems$ | async }}" disabled>
     </div>
     <button class="btn btn-orange-outline" (click)="onCheckout()">Checkout</button>
   </form>

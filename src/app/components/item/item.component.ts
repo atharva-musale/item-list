@@ -3,6 +3,7 @@ import {
   Input,
   Output,
   EventEmitter,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import {
   Item,
@@ -11,7 +12,8 @@ import {
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.css']
+  styleUrls: ['./item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemComponent {
   /**
@@ -24,7 +26,7 @@ export class ItemComponent {
    * Emits when delete button is clicked
    */
   @Output()
-  private deleteItemEvent = new EventEmitter();
+  private deleteItemEvent = new EventEmitter<Item>();
 
   constructor() { }
 

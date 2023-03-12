@@ -1,14 +1,12 @@
 .add-item-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
   gap: 1rem;
 }
 
 .add-item-container input {
-  grid-column: 1 / 4;
-}
-
-.add-item-container button {
-  grid-column: 4 / 5;
+  flex: 1;
 }

@@ -1,48 +1,35 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   OnInit,
 } from '@angular/core';
 import {
   ItemsService,
-} from 'src/app/services/items.service';
+} from 'src/app/services/items-service/items.service';
 import {
   calculateTotalCost,
-} from 'src/app/helpers/item.helper';
+} from 'src/app/helpers';
 import {
-  Subscription,
+  Observable,
 } from 'rxjs';
+import {
+  map,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrls: ['./checkout.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent {
   /**
-   * Total number of items
+   * Cost of all items
    */
-  public numOfItems = 0;
+  public totalCostOfItems$: Observable<number>;
 
-  /**
-   * Cost of the items
-   */
-  public costOfItems = 0;
-
-  /**
-   * List of subscriptions to unsuscribe on destroy
-   */
-  private subscriptions: Subscription[] = [];
-
-  constructor(private _itemsService: ItemsService) { }
-
-  ngOnInit(): void {
-    this.subscriptions.push(
-      this._itemsService.itemList$.subscribe((items) => {
-        console.log('List of items: ', items);
-        this.numOfItems = items.length;
-        this.costOfItems = calculateTotalCost(items);
-      })
-    );
+  constructor(private itemsService: ItemsService) {
+    this.totalCostOfItems$ = this.itemsService.itemList$.pipe(map(listOfItems => calculateTotalCost(listOfItems)));
   }
 
   /**

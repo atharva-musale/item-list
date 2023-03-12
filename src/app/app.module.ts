@@ -6,7 +6,7 @@ import { AddItemComponent } from './components/add-item/add-item.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { ItemComponent } from './components/item/item.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-import { ItemsService } from './services/items.service';
+import { ItemsService } from './services/items-service/items.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

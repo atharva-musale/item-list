@@ -1,14 +1,16 @@
 import {
+  ChangeDetectionStrategy,
   Component,
 } from '@angular/core';
 import {
   ItemsService,
-} from 'src/app/services/items.service';
+} from 'src/app/services';
 
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.css']
+  styleUrls: ['./add-item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class AddItemComponent {
@@ -29,5 +31,4 @@ export class AddItemComponent {
       itemName.value = "";
     }
   }
-
 }

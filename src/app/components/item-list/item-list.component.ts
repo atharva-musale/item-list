@@ -1,45 +1,27 @@
 import {
+  ChangeDetectionStrategy,
   Component,
-  OnDestroy,
-  OnInit,
 } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Item } from 'src/app/interfaces/item';
 import {
   ItemsService,
-} from 'src/app/services/items.service';
-import {
-  Observable,
-  Subscription,
-} from 'rxjs';
-import {
-  Item,
-} from 'src/app/interfaces/item';
+} from 'src/app/services/items-service/items.service';
 
 @Component({
   selector: 'app-item-list',
   templateUrl: './item-list.component.html',
-  styleUrls: ['./item-list.component.css']
+  styleUrls: ['./item-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ItemListComponent implements OnInit, OnDestroy {
+export class ItemListComponent {
   /**
    * List of items
    */
   public listOfItems$: Observable<Item[]>;
 
-  /**
-   * List of subscriptions to unsuscribe on destroy
-   */
-  private subscriptions: Subscription[] = [];
-
   constructor(private _itemsService: ItemsService) {
     this.listOfItems$ = this._itemsService.itemList$;
-  }
-
-  ngOnInit(): void {
-    this.subscriptions.push(
-      this._itemsService.itemList$.subscribe((items) => {
-        console.log('Items in itemList: ', items);
-      })
-    )
   }
 
   /**
@@ -47,11 +29,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
    *
    * @param item item to be deleted
    */
-  public deleteItem(item: any ) {
+  public deleteItem(item: Item) {
     this._itemsService.deleteItem(item);
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
