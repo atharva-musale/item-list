@@ -1,9 +1,4 @@
-<div class="addItem-container">
-  <div class="input-group mb-3" id="addItemField">
-    <input type="text" #itemName class="form-control" placeholder="Enter item" aria-label="Recipient's username"
-      aria-describedby="basic-addon2">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" (click)="clickEvent(itemName)">Add item</button>
-    </div>
-  </div>
+<div class="add-item-container">
+  <input #itemName class="custom-input" type="text" (keyup.enter)="addItemClickEvent(itemName)" placeholder="Enter item">
+  <button class="btn btn-orange-outline" type="button" (click)="addItemClickEvent(itemName)">Add item</button>
 </div>

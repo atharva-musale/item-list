@@ -1,14 +1,8 @@
-.box{
-  border: 1px solid rgb(210, 210, 210);
-  border-radius: 6px;
-  width: 60%;
-  margin: auto;
-  margin-top: 1%;
-  margin-bottom: 1%;
-  padding: 1%;
+.container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-.items-space{
-  padding-bottom: 6px;
-  margin-bottom: 2px;
+.display-items-container {
+  margin-bottom: 1rem;
 }

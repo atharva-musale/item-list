@@ -1,31 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { IItem } from 'src/app/interfaces/item';
-import { ItemsService } from 'src/app/services/items.service';
+import {
+  ChangeDetectionStrategy,
+  Component,
+} from '@angular/core';
+import {
+  ItemsService,
+} from 'src/app/services';
 
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.css']
+  styleUrls: ['./add-item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AddItemComponent implements OnInit {
 
-  constructor(private _itemsService: ItemsService) { }
+export class AddItemComponent {
 
-  ngOnInit(): void {
-  }
+  constructor(private itemsService: ItemsService) { }
 
-  clickEvent(itemName: any) {
-    console.log('Button Clicked.');
+  /**
+   * Triggered on add item, adds item to the list in service
+   *
+   * @param itemName input field to get the current value
+   */
+  public addItemClickEvent(itemName: HTMLInputElement) {
     if (itemName.value == "") {
-      alert("Enter a valid Item name.");
+      alert("Enter a valid item name.");
     }
     else {
-      let newItem: IItem = this._itemsService.createObject(itemName.value);
-      this._itemsService.addToItemList(newItem).subscribe((res) => {
-        console.log(res);
-      });
+      this.itemsService.addToItemList(itemName.value);
       itemName.value = "";
     }
   }
-
 }

@@ -1,28 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { ItemsService } from 'src/app/services/items.service';
-import { Subscription } from 'rxjs';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+} from '@angular/core';
+import {
+  ItemsService,
+} from 'src/app/services/items-service/items.service';
+import {
+  calculateTotalCost,
+} from 'src/app/helpers';
+import {
+  Observable,
+} from 'rxjs';
+import {
+  map,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrls: ['./checkout.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent {
+  /**
+   * Cost of all items
+   */
+  public totalCostOfItems$: Observable<number>;
 
-  public numOfItems = 0;
-  public costOfItems = 0;
-
-  ngOnInit(): void {
-    this._itemsService.getItemList().subscribe(() => {
-      this.numOfItems = this._itemsService.getNumberOfItems();
-      this.costOfItems = this._itemsService.getCostOfItems();
-    });
+  constructor(private itemsService: ItemsService) {
+    this.totalCostOfItems$ = this.itemsService.itemList$.pipe(map(listOfItems => calculateTotalCost(listOfItems)));
   }
 
-  constructor(private _itemsService: ItemsService) { }
-
-  onCheckout() {
+  /**
+   * To handle checkout click event
+   */
+  public onCheckout() {
     console.log("Checkout clicked");
   }
-
 }

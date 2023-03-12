@@ -1,5 +1,3 @@
 <div class="itemList-container">
-  <app-item (deleteItemEvent)="deleteItem($event)" *ngFor="let tempItem of listOfItems" [item]="tempItem">
-  </app-item>
-
+  <app-item *ngFor="let item of (listOfItems$ | async)" [item]="item" (deleteItemEvent)="deleteItem($event)"></app-item>
 </div>

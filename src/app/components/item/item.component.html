@@ -1,9 +1,5 @@
-<div>
-  <li class="single-item list-group-item">
-    <div>
-      {{ item.name }}
-      <button (click)="onDelete()" class="btn btn-danger btn-sm float-right delete">X</button>
-    </div>
-  </li>
-
-</div>
+<li *ngIf="item" class="list-item">
+  <p class="item-id">{{ item.id }}.</p>
+  <p>{{ item.name }}</p>
+  <button (click)="onDelete()" class="btn btn-orange delete-button">×</button>
+</li>

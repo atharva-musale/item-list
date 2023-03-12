@@ -1,4 +1,42 @@
-.checkout-container{
-  width: 60%;
-  margin: auto;
+.checkout-container {
+  margin: 1rem 0;
+}
+
+.checkout-container h1 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.grid-item-left {
+  grid-column: 1 / 2;
+  align-self: center;
+}
+
+.grid-item-right {
+  grid-column: 2 / 5;
+}
+
+.checkout-container label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+.checkout-container input {
+  font-size: 1.1rem;
+}
+
+.disabled {
+  outline: none;
+}
+
+.checkout-container button {
+  margin: 1rem 0 0 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
