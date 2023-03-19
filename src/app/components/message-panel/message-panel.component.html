@@ -1,0 +1,6 @@
+<ng-container *ngIf="messageToDisplay$ | async as message">
+  <div *ngIf="message" class="message-container" [ngClass]="type">
+    <mat-icon>{{ ICONS[type] }}</mat-icon>
+    <p class="message-text">{{ message }}</p>
+  </div>
+</ng-container>

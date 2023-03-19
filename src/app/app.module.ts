@@ -8,6 +8,7 @@ import { ItemComponent } from './components/item/item.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ItemsService } from './services/items-service/items.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MessagePanelComponent } from './components/message-panel/message-panel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -17,7 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
     AddItemComponent,
     ItemListComponent,
     ItemComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    MessagePanelComponent
   ],
   imports: [
     BrowserModule,

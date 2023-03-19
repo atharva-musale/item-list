@@ -4,7 +4,12 @@ import {
 } from '@angular/core';
 import {
   ItemsService,
+  MessagePanelService,
 } from 'src/app/services';
+import {
+  EMPTY_INPUT_MESSAGE,
+  ITEM_ADDED_MESSAGE,
+} from 'src/assets/default-messages';
 
 @Component({
   selector: 'app-add-item',
@@ -15,7 +20,7 @@ import {
 
 export class AddItemComponent {
 
-  constructor(private itemsService: ItemsService) { }
+  constructor(private itemsService: ItemsService, private messagesService: MessagePanelService) { }
 
   /**
    * Triggered on add item, adds item to the list in service
@@ -24,11 +29,11 @@ export class AddItemComponent {
    */
   public addItemClickEvent(itemName: HTMLInputElement) {
     if (itemName.value == "") {
-      alert("Enter a valid item name.");
-    }
-    else {
+      this.messagesService.pushMessage(EMPTY_INPUT_MESSAGE);
+    } else {
       this.itemsService.addToItemList(itemName.value);
       itemName.value = "";
+      this.messagesService.pushMessage(ITEM_ADDED_MESSAGE);
     }
   }
 }
