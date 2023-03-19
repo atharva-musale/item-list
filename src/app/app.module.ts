@@ -8,6 +8,8 @@ import { ItemComponent } from './components/item/item.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ItemsService } from './services/items-service/items.service';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [ItemsService],
   bootstrap: [AppComponent]

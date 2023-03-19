@@ -26,6 +26,15 @@
   --gray-200: #eaecef;
   --gray-100: #f2f2f2;
   --white: #ffffff;
+
+  --warning-bg: #fff3cd;
+  --warning-text: #997404;
+
+  --danger-bg: #f8d7da;
+  --danger-text: #b02a37;
+
+  --success-bg: #d1e7dd;
+  --success-text: #146c43;
 }
 
 /* typography */
